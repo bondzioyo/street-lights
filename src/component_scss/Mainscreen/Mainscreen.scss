@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// body {
+//   // display: block;
+// }
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background: #f7e76a;
+  // background: #f7e76a98;
+
+  .leftfield {
+    width: 70%;
+    background: #6a85f7;
+    box-shadow: 3vw 0vw 5vw #6a85f7;
+    border-radius: 0 4vw 4vw 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    // align-self: center;
+    justify-self: center;
+
+    .inputarea {
+      display: flex;
+      // background: chartreuse;
+      width: 65vw;
+      height: 14vh;
+      justify-content: center;
+      align-items: center;
+      overflow: auto;
+
+      .inputdescription {
+        flex: 2;
+        margin-right: 2vw;
+        font-size: 1.3vmax;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: end;
+        color: white;
+      }
+
+      .inputvalue {
+        flex: 1.5;
+        height: 10vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-radius: 3vw;
+        padding-left: 2vw;
+        border: none;
+        outline: none;
+
+        &::placeholder {
+          width: 83%;
+          border-bottom: 1px rgb(139, 139, 139) solid;
+        }
+      }
+
+      .inputselect {
+        flex: 2;
+        margin-left: 3vw;
+        height: 10vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-radius: 3vw;
+        padding-left: 2vw;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .inputcheck {
+        flex: 2;
+        font-size: 1.3vmax;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: left;
+        color: white;
+        margin-left: 3vw;
+        padding-left: 2vw;
+        height: 10vh;
+        border-radius: 3vw;
+
+        .checkmark {
+          width: 7vh;
+          height: 7vh;
+        }
+      }
+
+      .findout {
+        width: 60%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3vw;
+        border: none;
+        outline: none;
+        box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.363);
+        letter-spacing: 2px;
+        font-weight: 600;
+
+        &:hover {
+          cursor: pointer;
+          background: rgb(218, 218, 218);
+        }
+      }
+    }
+  }
+
+  .rightfield {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 50vh;
+    }
+  }
+}

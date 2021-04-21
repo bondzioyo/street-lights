@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAGI,qBAHiB,CAGjB,IAAI,CAAA;EACA,WAAW,EAAE,GAAG;CAEnB",
+    "sources": [
+        "PowerOfLampComponent.scss"
+    ],
+    "names": [],
+    "file": "PowerOfLampComponent.css"
+}

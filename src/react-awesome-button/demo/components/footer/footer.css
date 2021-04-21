@@ -1,0 +1,19 @@
+.container {
+  display: block;
+  margin-top: 80px;
+  width: 100%;
+  text-align: center;
+}
+
+.container img {
+  max-width: 260px;
+  width: 80%;
+  margin-bottom: 8px;
+}
+
+.container small {
+  display: block;
+  font-size: 12px;
+  line-height: 24px;
+}
+/*# sourceMappingURL=footer.css.map */

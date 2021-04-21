@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f7e76a;
+}
+
+main .leftfield {
+  width: 70%;
+  background: #6a85f7;
+  -webkit-box-shadow: 3vw 0vw 5vw #6a85f7;
+          box-shadow: 3vw 0vw 5vw #6a85f7;
+  border-radius: 0 4vw 4vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: center;
+}
+
+main .leftfield .inputarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 65vw;
+  height: 14vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: auto;
+}
+
+main .leftfield .inputarea .inputdescription {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-right: 2vw;
+  font-size: 1.3vmax;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: end;
+  color: white;
+}
+
+main .leftfield .inputarea .inputvalue {
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 3vw;
+  padding-left: 2vw;
+  border: none;
+  outline: none;
+}
+
+main .leftfield .inputarea .inputvalue::-webkit-input-placeholder {
+  width: 83%;
+  border-bottom: 1px #8b8b8b solid;
+}
+
+main .leftfield .inputarea .inputvalue:-ms-input-placeholder {
+  width: 83%;
+  border-bottom: 1px #8b8b8b solid;
+}
+
+main .leftfield .inputarea .inputvalue::-ms-input-placeholder {
+  width: 83%;
+  border-bottom: 1px #8b8b8b solid;
+}
+
+main .leftfield .inputarea .inputvalue::placeholder {
+  width: 83%;
+  border-bottom: 1px #8b8b8b solid;
+}
+
+main .leftfield .inputarea .inputselect {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-left: 3vw;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 3vw;
+  padding-left: 2vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+main .leftfield .inputarea .inputcheck {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  font-size: 1.3vmax;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  color: white;
+  margin-left: 3vw;
+  padding-left: 2vw;
+  height: 10vh;
+  border-radius: 3vw;
+}
+
+main .leftfield .inputarea .inputcheck .checkmark {
+  width: 7vh;
+  height: 7vh;
+}
+
+main .leftfield .inputarea .findout {
+  width: 60%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 3vw;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.363);
+          box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.363);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+main .leftfield .inputarea .findout:hover {
+  cursor: pointer;
+  background: #dadada;
+}
+
+main .rightfield {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .rightfield img {
+  height: 50vh;
+}
+/*# sourceMappingURL=Mainscreen.css.map */

@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "variables.scss",
+        "variables/structure.scss",
+        "variables/share.scss",
+        "variables/types.scss"
+    ],
+    "names": [],
+    "file": "variables.css"
+}
