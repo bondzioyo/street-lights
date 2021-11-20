@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/street-lights/static/css/main.a1dd51bc.chunk.css",
+    "main.js": "/street-lights/static/js/main.68e3d08e.chunk.js",
+    "main.js.map": "/street-lights/static/js/main.68e3d08e.chunk.js.map",
+    "runtime-main.js": "/street-lights/static/js/runtime-main.b1909a20.js",
+    "runtime-main.js.map": "/street-lights/static/js/runtime-main.b1909a20.js.map",
+    "static/css/2.ec4ffe8c.chunk.css": "/street-lights/static/css/2.ec4ffe8c.chunk.css",
+    "static/js/2.ad6015d6.chunk.js": "/street-lights/static/js/2.ad6015d6.chunk.js",
+    "static/js/2.ad6015d6.chunk.js.map": "/street-lights/static/js/2.ad6015d6.chunk.js.map",
+    "static/js/3.c53f75f8.chunk.js": "/street-lights/static/js/3.c53f75f8.chunk.js",
+    "static/js/3.c53f75f8.chunk.js.map": "/street-lights/static/js/3.c53f75f8.chunk.js.map",
+    "index.html": "/street-lights/index.html",
+    "static/css/2.ec4ffe8c.chunk.css.map": "/street-lights/static/css/2.ec4ffe8c.chunk.css.map",
+    "static/css/main.a1dd51bc.chunk.css.map": "/street-lights/static/css/main.a1dd51bc.chunk.css.map",
+    "static/js/2.ad6015d6.chunk.js.LICENSE.txt": "/street-lights/static/js/2.ad6015d6.chunk.js.LICENSE.txt",
+    "static/media/dx.light.css": "/street-lights/static/media/dxicons.d8b3a23c.ttf",
+    "static/media/street-light.284f8f9a.svg": "/street-lights/static/media/street-light.284f8f9a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1909a20.js",
+    "static/css/2.ec4ffe8c.chunk.css",
+    "static/js/2.ad6015d6.chunk.js",
+    "static/css/main.a1dd51bc.chunk.css",
+    "static/js/main.68e3d08e.chunk.js"
+  ]
+}
