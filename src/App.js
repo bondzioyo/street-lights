@@ -10,11 +10,15 @@ import { useState } from "react";
 
 function App() {
   const [inputPolValue, setInputPolValue] = useState(""); //PolValue - power of lamp value
+  const [selectPolValue, setSelectPolValue] = useState(""); //PolValue - power of lamp value
   const [powerOfLamp, setPowerOfLamp] = useState("");
   const [inputNolValue, setInputNolValue] = useState(""); // NolValue - number of lamp value
   const [numberOfLamp, setNumberOfLamp] = useState("");
   const [inputUsedenValue, setInputUsedenValue] = useState(""); // Useden - used energy
   const [usedEnergy, setUsedEnergy] = useState("");
+  const [inputRateValue, setInputRateValue] = useState("");
+  const [selectRateValue, setSelectRateValue] = useState("");
+  const [rate, setRate] = useState("");
   // const [numberOfLamp, setNumberOfLamp] = useState("");
 
   var raport;
@@ -27,11 +31,12 @@ function App() {
         powerOfLamp={powerOfLamp}
         numberOfLamp={numberOfLamp}
         usedEnergy={usedEnergy}
+        rate={rate}
       />
     );
   }
   else if (usedEnergy == 0 && powerOfLamp != 0){
-    raport = <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} />;
+    raport = <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} rate={rate}/>;
   }
   else if (usedEnergy === 0 && powerOfLamp === 0 && numberOfLamp === 0){raport = <div></div>;}
 
@@ -40,7 +45,9 @@ function App() {
       <Mainscreen
         //Power of lamp
         inputPolValue={inputPolValue}
+        selectPolValue={selectPolValue}
         setInputPolValue={setInputPolValue}
+        setSelectPolValue={setSelectPolValue}
         setPowerOfLamp={setPowerOfLamp}
         // powerOfLamp={powerOfLamp}
         //Number of lamp
@@ -51,6 +58,11 @@ function App() {
         inputUsedenValue={inputUsedenValue}
         setInputUsedenValue={setInputUsedenValue}
         setUsedEnergy={setUsedEnergy}
+        inputRateValue={inputRateValue}
+        setInputRateValue={setInputRateValue}
+        selectRateValue={selectRateValue}
+        setSelectRateValue={setSelectRateValue}
+        setRate={setRate}
       />
       {/* <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} /> */}
       {/* <ComparisionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} usedEnergy={usedEnergy}/> */}

@@ -6,7 +6,7 @@ import { Bar } from "react-chartjs-2";
 import MoreThan20perc from "./MoreThan20perc";
 import LessThan20perc from "./LessThan20perc";
 
-const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy }) => {
+const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
   const groupBy = (items, key) =>
     items.reduce(
       (result, item) => ({
@@ -18,7 +18,7 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy }) => {
 
   console.log();
 
-  var stawka = 0.461;
+  var stawka = rate;
   var numberFormat = new Intl.NumberFormat("pl");
 
   var data = NightTime.map((nt) => {
@@ -134,6 +134,8 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy }) => {
         },
       ],
     },
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   var info;
@@ -147,50 +149,31 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy }) => {
 
   return (
     <div className="raportfield">
-      <div className="header">Raport porównawczy</div>
       <div className="data">
-        <div className="chart">
-          <h1 className="header-chart">Porównanie danych o zużyciu</h1>
-          <Bar data={dataChart} options={options} />
+        <div className="chart-container">
+          <div className="header">Raport porównawczy</div>
+          <div className="chart">
+            <h1 className="header-chart">Porównanie danych o zużyciu</h1>
+            <div className="chart3">
+              <Bar data={dataChart} options={options} />
+            </div>
+          </div>
         </div>
+        {info}
         <div className="details">
           <h1 className="header-details">Szczegółowe dane</h1>
-          {/* <div className="detailInfo">
-            Twoje zużycie jest o {roznica.toFixed(2)} % większe niz jego
-            teoretyczna wartość {<br></br>}{" "}
-            <span style={{ fontSize: 50 }}>⚠</span>
-          </div> */}
-          
-          {info}
-          
-          
-          {/* DETAIL 1 */}
-          <div className="detail2">
-            <li>Roczny koszt energii dla podanego zużycia energii:</li>
+          <div className="details-data-container">
+            <div>Roczny koszt energii dla podanego zużycia energii:</div>
+            <div className="details-data-value">{numberFormat.format((usedEnergy * stawka).toFixed(2))} zł</div>
           </div>
-          <div className="detail2value">
-            {/* {numberFormat.format(koszt.toFixed(2))} */}
-            {numberFormat.format((usedEnergy * stawka).toFixed(2))}
-            {/* {numberFormat.format((usedEnergy*stawka).toFixed(3))} */}
+          <div className="details-data-container">
+            <div>Przewidywany roczny koszt zużycia energii:</div>
+            <div className="details-data-value">{numberFormat.format(koszt.toFixed(2))} zł</div>
           </div>
-          <div className="detail2unit">zł</div>
-          {/* DETAIL 2 */}
-          <div className="detail3">
-            <li>Przewidywany roczny koszt zużycia energii:</li>
+          <div className="details-data-container">
+            <div>Przewidywane zużycie energii:</div>
+            <div className="details-data-value">{numberFormat.format(consumptedPower.toFixed(3))} kWh</div>
           </div>
-          <div className="detail3value">
-            {numberFormat.format(koszt.toFixed(2))}
-          </div>
-          {/* <div className="detail3unit">kWh</div> */}
-          {/* DETAIL 3 */}
-          <div className="detail3unit">zł</div>
-          <div className="detail4">
-            <li>Przewidywane zużycie energii:</li>
-          </div>
-          <div className="detail4value">
-            <div>{numberFormat.format(consumptedPower.toFixed(3))}</div>
-          </div>
-          <div className="detail4unit">kWh</div>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const groupBy = (items, key) =>
     {}
   );
 
-const PredictionRaport = ({ powerOfLamp, numberOfLamp }) => {
+const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
   // console.log(powerOfLamp.map);
 
   // var czasSwiecenia = NightTime.map((nt) => nt.night_time).reduce(
@@ -31,7 +31,8 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp }) => {
     };
   });
 
-  var stawka = 0.4610;
+  // var stawka = 0.4610;
+  var stawka = rate;
   var numberFormat = new Intl.NumberFormat("pl");
 
   // console.log(data.map((e) => e.powerConsumption));
@@ -226,54 +227,43 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp }) => {
         },
       ],
     },
+    responsive: true,
+    maintainAspectRatio: false,
   }
 
   return (
     <div className="raportfield">
-      <div className="header">Raport prognozy</div>
       <div className="data">
-        <div className="chart">
-          <h1 className="header-chart">Prognoza zużycia</h1>
-          <div className='chart1'>
-          <Bar data={data2} options={options}/>
-          </div>
-          <div className='chart2'>
-          <Bar data={data3} options={options}/>
+        <div className="chart-container">
+          <div className="header">Raport prognozy</div>
+          <div className="chart">
+            <h1 className="header-chart">Prognoza zużycia</h1>
+            <div className='chart1'>
+            <Bar data={data2} options={options}/>
+            </div>
+            <div className='chart2'>
+            <Bar data={data3} options={options}/>
+            </div>
           </div>
         </div>
         <div className="details">
           <h1 className="header-details">Szczegółowe dane</h1>
-          {/* DETAIL 1 */}
-          <div className="detail1">
-            <li>Roczny koszt energii dla podanej mocy instalacji:</li>
+          <div className="details-data-container">
+            <div>Roczny koszt energii dla podanej mocy instalacji:</div>
+            <div className="details-data-value">{numberFormat.format(koszt.toFixed(2))} zł</div>
           </div>
-          <div className="detail1value">
-            {numberFormat.format(koszt.toFixed(2))}
+          <div className="details-data-container">
+            <div>Roczne zużycie energii:</div>
+            <div className="details-data-value">{numberFormat.format(consumptedPower.toFixed(3))} kWh</div>
           </div>
-          <div className="detail1unit">zł</div>
-          {/* DETAIL 2 */}
-          <div className="detail2">
-            <li>Roczne zużycie energii:</li>
+          <div className="details-data-container">
+            <div>Najwyższe zakładane zużycie przypada na miesiąc:</div>
+            <div className="details-data-value">{miesiac_txt}</div>
           </div>
-          <div className="detail2value">
-            {numberFormat.format(consumptedPower.toFixed(3))}
+          <div className="details-data-container">
+            <div>W tym miesiącu zużycie wynosi:</div>
+            <div className="details-data-value">{numberFormat.format((mostConsumpionMonth / 1000).toFixed(3))} kWh</div>
           </div>
-          <div className="detail2unit">kWh</div>
-          {/* DETAIL 3 */}
-          <div className="detail3">
-            <li>Najwyższe zakładane zużycie przypada na miesiąc:</li>
-          </div>
-          <div className="detail3month">{miesiac_txt}</div>
-          {/* DETAIL 4 */}
-          <div className="detail4">
-            <li>W tym miesiącu zużycie wynosi:</li>
-          </div>
-          <div className="detail4value">
-            <div>
-              {numberFormat.format((mostConsumpionMonth / 1000).toFixed(3))}
-            </div>
-          </div>
-          <div className="detail4unit">kWh</div>
         </div>
       </div>
     </div>

@@ -1,8 +1,30 @@
 .raportfield{
-    padding-top: 3vh;
     position: relative;
-background: rgb(207, 207, 207);
-height: 100vh;
+/* background: rgb(207, 207, 207); */
 width: 100vw;
 z-index: 2;
+}
+
+.chart-container {
+    padding: 5vh 0;
+    background: rgb(207, 207, 207);
+}
+
+.details-data-container {
+    width: 80%;
+    margin: 0 10%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details-data-value {
+    width: 300px;
+    background: linear-gradient(90deg, rgba(106,133,247,1) 0%, rgba(247,231,106,1) 100%);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 2vmax;
 }

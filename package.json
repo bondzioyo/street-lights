@@ -11,6 +11,7 @@
     "chart.js": "^2.9.4",
     "devextreme": "^20.2.4",
     "devextreme-react": "20.2.3",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-awesome-button": "^6.5.1",
     "react-chartjs-2": "^2.9.4",
