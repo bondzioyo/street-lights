@@ -1,22 +1,19 @@
 import React from "react";
 import "../component_scss/Mainscreen/Mainscreen.css";
-// import PredictionRaport from "./PredictionRaport";
 import Rightfield from "./Rightfield";
-// import AwesomeButton from "../react-awesome-button/src/components/AwesomeButton";
-// import "../react-awesome-button/dist/themes/theme-amber.css";
-
-var input = false;
+import InputField from "./ui/InputField";
+import SelectField from "./ui/SelectField";
 
 const Mainscreen = ({
   setInputPolValue,
   setSelectPolValue,
-  // powerOfLamp,
+
   setPowerOfLamp,
   inputPolValue,
   selectPolValue,
   setInputNolValue,
   setNumberOfLamp,
-  inputNolValue, 
+  inputNolValue,
   setInputUsedenValue,
   setUsedEnergy,
   inputUsedenValue,
@@ -24,160 +21,156 @@ const Mainscreen = ({
   setInputRateValue,
   selectRateValue,
   setSelectRateValue,
-  setRate
+  setRate,
+  showForecast,
+  showComparison,
+  onScrollToReport,
 }) => {
-
-  
-
   const inputPolValueHandler = (e) => {
-    // console.log(e.target.value);
-    // input = true;
-    // console.log(input)
     setInputPolValue(e.target.value);
   };
 
   const selectPolValueHandler = (e) => {
-    // console.log(e.target.value);
-    // input = false;
-    // console.log(input)
-    // setInputPolValue(e.target.value);
     setSelectPolValue(e.target.value);
-    // setInputPolValue(e.target.value);
   };
 
   const inputNolValueHandler = (e) => {
     setInputNolValue(e.target.value);
-  }
+  };
 
   const inputUsedenValueHandler = (e) => {
     setInputUsedenValue(e.target.value);
-  }
+  };
 
-const inputRateValueHandler = (e) => {
-  setInputRateValue(e.target.value);
-}
+  const inputRateValueHandler = (e) => {
+    setInputRateValue(e.target.value);
+  };
 
-const selectRateValueHandler = (e) => {
-  setSelectRateValue(e.target.value);
-}
+  const selectRateValueHandler = (e) => {
+    setSelectRateValue(e.target.value);
+  };
 
   const submitValuesHandler = (e) => {
     e.preventDefault();
-    if(inputNolValue >= 0){
-    setNumberOfLamp(inputNolValue);}
-    if(inputPolValue != 0){
-      setPowerOfLamp(inputPolValue);
+    if (Number(inputNolValue) >= 0) {
+      setNumberOfLamp(inputNolValue);
     }
-    else if(selectPolValue != 0){
+    if (Number(inputPolValue) !== 0) {
+      setPowerOfLamp(inputPolValue);
+    } else if (Number(selectPolValue) !== 0) {
       setPowerOfLamp(selectPolValue);
     }
-    if(inputUsedenValue!==''){
+    if (inputUsedenValue !== "") {
       setUsedEnergy(inputUsedenValue);
     }
-    if(inputRateValue != 0){
+    if (Number(inputRateValue) !== 0) {
       setRate(inputRateValue);
-    }
-    else if(selectRateValue != 0){
+    } else if (Number(selectRateValue) !== 0) {
       setRate(selectRateValue);
     }
-
   };
+
+  const lampOptions = [
+    { value: "60", label: "ALC LED 60W" },
+    { value: "90", label: "ALC LED 90W" },
+    { value: "40", label: "Brd CREE" },
+    { value: "50", label: "Bridgelux IP65" },
+    { value: "33", label: "Crown Basic LED 5050lm" },
+    { value: "62", label: "Crown Basic LED 7800lm" },
+    { value: "50", label: "Everon PLUS 100 50W" },
+    { value: "60", label: "Everon PLUS 100 60W" },
+    { value: "140", label: "Everon PLUS 200 140W" },
+    { value: "180", label: "Everon PLUS 200 180W" },
+    { value: "30", label: "Kepler LED IP66 30W" },
+    { value: "50", label: "Majoris IP65" },
+    { value: "150", label: "Malaga SGS102 Son-T150W" },
+    { value: "50", label: "MZZ COB Epistar" },
+    { value: "100", label: "Selenium SGP340 Son-T100W" },
+    { value: "40", label: "Titan IP65" },
+    { value: "30", label: "WHL COB Epistar" },
+    { value: "106", label: "Urbano LED ED 11750lm" },
+    { value: "200", label: "Urbano LED 200W" },
+  ];
+
+  const rateOptions = [
+    { value: "0.461", label: "Energa" },
+    { value: "0.5839", label: "Tauron" },
+    { value: "0.4119", label: "Enea" },
+    { value: "0.3568", label: "PGE" },
+  ];
 
   return (
     <div>
       <main>
         <div className="leftfield">
-          <div className="inputarea">
-            <div className="inputdescription">
-              Podaj moc oprawy* lub wybierz z listy
-            </div>
-            <input
-              className="inputvalue"
-              type="number"
-              placeholder="Moc [W]"
-              min="0"
-              defaultValue={inputPolValue} //polvalue = power of lamp value
-              onChange={inputPolValueHandler}
-            ></input>
-            <select className="inputselect" defaultValue="0" onChange={selectPolValueHandler}>
-              <option value="">Wybierz</option>
-              <option value="60">ALC LED 60W</option>
-              <option value="90">ALC LED 90W</option>
-              <option value="40">Brd CREE</option>
-              <option value="50">Bridgelux IP65</option>
-              <option value="33">Crown Basic LED 5050lm</option>
-              <option value="62">Crown Basic LED 7800lm</option>
-              <option value="50">Everon PLUS 100 50W</option>
-              <option value="60">Everon PLUS 100 60W</option>
-              <option value="140">Everon PLUS 200 140W</option>
-              <option value="180">Everon PLUS 200 180W</option>
-              <option value="30">Kepler LED IP66 30W</option>
-              <option value="50">Majoris IP65</option>
-              <option value="150">Malaga SGS102 Son-T150W</option>
-              <option value="50">MZZ COB Epistar</option>
-              <option value="100">Selenium SGP340 Son-T100W</option>
-              <option value="40">Titan IP65</option>
-              <option value="30">WHL COB Epistar</option>
-              <option value="106">Urbano LED ED 11750lm</option>
-              <option value="200">Urbano LED 200W</option>
-            </select>
-          </div>
-          <div className="inputarea">
-            <div className="inputdescription">Podaj ilość lamp</div>
-            <input
-              className="inputvalue"
-              type="number"
-              placeholder="Ilość lamp"
-              min="1"
-              value={inputNolValue}
-              onChange={inputNolValueHandler}
-            ></input>
-            <div className="inputcheck">
-              {/* *Podałem łączną moc dla wszystkich opraw */}
-              {/* <input className="checkmark" type="checkbox"></input> */}
-            </div>
-          </div>
-          <div className="inputarea">
-            <div className="inputdescription">
-              Wprowadź swoje zużycie energii w kWh
-            </div>
-            <input
-              className="inputvalue"
-              type="number"
-              placeholder="Zużycie [kWh]"
-              onChange={inputUsedenValueHandler}
-            ></input>
-            <div className="inputselect"></div>
-          </div>
-          <div className="inputarea">
-            <div className="inputdescription">
-              Wprowadź stawkę za energię lub wybierz sprzedawcę, który działa w
-              Twoim regionie
-            </div>
-            <input
-              className="inputvalue"
-              type="number"
-              placeholder="Stawka [zł/kWh]"
-              defaultValue={inputRateValue} 
-              onChange={inputRateValueHandler}
-            ></input>
-            <select className="inputselect" name="Dostawca" defaultValue={selectRateValue} onChange={selectRateValueHandler}>
-              <option value="">Wybierz sprzedawcę</option>
-              {/* <option value="0.76">Innogy</option> */}
-              <option value="0.461">Energa</option>
-              <option value="0.5839">Tauron</option>
-              {/* <option value="0.75">Tauron (Katowice/Gliwice)</option> */}
-              <option value="0.4119">Enea</option>
-              <option value="0.3568">PGE</option>
-            </select>
-          </div>
-          <div className="inputarea">
-            <button className="findout" type="submit" onClick={submitValuesHandler}>
-              SPRAWDŹ →
+          <InputField
+            label="Enter fixture power or choose from the list"
+            placeholder="Power [W]"
+            min="0"
+            defaultValue={inputPolValue}
+            onChange={inputPolValueHandler}
+          />
+          <SelectField
+            placeholder="Choose"
+            defaultValue="0"
+            options={lampOptions}
+            onChange={selectPolValueHandler}
+          />
+          <InputField
+            label="Enter number of lamps"
+            placeholder="Number of lamps"
+            min="1"
+            value={inputNolValue}
+            onChange={inputNolValueHandler}
+          />
+          <InputField
+            label="Enter your energy consumption in kWh"
+            placeholder="Consumption [kWh]"
+            onChange={inputUsedenValueHandler}
+          />
+          <InputField
+            label="Enter energy rate or choose your provider"
+            placeholder="Rate [PLN/kWh]"
+            defaultValue={inputRateValue}
+            onChange={inputRateValueHandler}
+          />
+          <SelectField
+            placeholder="Choose provider"
+            defaultValue={selectRateValue}
+            options={rateOptions}
+            onChange={selectRateValueHandler}
+          />
+          <div className="inputarea" style={{ gap: 12 }}>
+            <button
+              className="findout"
+              type="submit"
+              onClick={(e) => {
+                submitValuesHandler(e);
+                onScrollToReport();
+              }}
+            >
+              CHECK →
             </button>
-            {/* <AwesomeButton type="primary" size="large" onClick={submitPolValueHandler, displayPredictionRaport}>
-              SPRAWDŹ ➥ 
-            </AwesomeButton> */}
+            {showForecast && (
+              <button
+                className="findout"
+                type="button"
+                onClick={onScrollToReport}
+                style={{ width: "20%" }}
+              >
+                Forecast
+              </button>
+            )}
+            {showComparison && (
+              <button
+                className="findout"
+                type="button"
+                onClick={onScrollToReport}
+                style={{ width: "20%" }}
+              >
+                Comparison
+              </button>
+            )}
           </div>
         </div>
         <div className="rightfield">

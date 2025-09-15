@@ -16,12 +16,10 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
       {}
     );
 
-  console.log();
+  const stawka = rate;
+  const numberFormat = new Intl.NumberFormat("en");
 
-  var stawka = rate;
-  var numberFormat = new Intl.NumberFormat("pl");
-
-  var data = NightTime.map((nt) => {
+  const data = NightTime.map((nt) => {
     return {
       month: nt.month,
       day: nt.day,
@@ -29,13 +27,7 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
     };
   });
 
-  console.log(
-    NightTime.map((e) => e.night_time).reduce(function (a, b) {
-      return a + b;
-    }, 0)
-  );
-
-  var sumaNightTime = NightTime.map((e) => e.night_time).reduce(function (
+  const sumaNightTime = NightTime.map((e) => e.night_time).reduce(function (
     a,
     b
   ) {
@@ -45,10 +37,10 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
 
   // console.log(usedEnergy*1000/(sumaNightTime*numberOfLamp))
 
-  var praktycznaMocOprawy =
+  const praktycznaMocOprawy =
     (usedEnergy * 1000) / (sumaNightTime * numberOfLamp);
 
-  var dataPraktyczne = NightTime.map((nt) => {
+  const dataPraktyczne = NightTime.map((nt) => {
     return {
       month: nt.month,
       day: nt.day,
@@ -56,10 +48,10 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
     };
   });
 
-  var tab = [];
-  var tab2 = [];
-  var temporaryVar1 = 0;
-  var temporaryVar2 = 0;
+  const tab = [];
+  const tab2 = [];
+  let temporaryVar1 = 0;
+  let temporaryVar2 = 0;
   // var miesiac_num = 0;
   for (var j = 1; j <= 12; j++) {
     temporaryVar1 = groupBy(dataPraktyczne, "month")
@@ -77,43 +69,41 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
     tab2[j - 1] = (temporaryVar2 / 1000).toFixed(2);
   }
 
-  console.log(tab2);
-
-  var consumptedPower =
+  const consumptedPower =
     data
       .map((nt) => nt.powerConsumption)
       .reduce(function (a, b) {
         return a + b;
       }, 0) / 1000;
 
-  var koszt = consumptedPower * stawka;
+  const koszt = consumptedPower * stawka;
 
-  var roznica = (usedEnergy / consumptedPower - 1) * 100;
+  const roznica = (usedEnergy / consumptedPower - 1) * 100;
 
   const dataChart = {
     labels: [
-      "Styczeń",
-      "Luty",
-      "Marzec",
-      "Kwiecień",
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ],
     datasets: [
       {
-        label: "Zuzycie energii [kWh]",
+        label: "Energy consumption [kWh]",
         data: tab,
         backgroundColor: "#f7e76a98",
         borderWidth: 1,
       },
       {
-        label: "Zakładane zuzycie energii [kWh]",
+        label: "Estimated energy consumption [kWh]",
         data: tab2,
         backgroundColor: "#f7a578",
         borderWidth: 1,
@@ -138,22 +128,23 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
     maintainAspectRatio: false,
   };
 
-  var info;
+  let info;
 
-  if (roznica > 20){
-    info = <MoreThan20perc roznica={roznica}/>}
-    else if(roznica > 0 && roznica< 20) {info = <LessThan20perc roznica={roznica}/>}
-    else if(roznica < 0 && roznica > -20) {info = <LessThan20perc roznica={roznica}/>}
-
-  
+  if (roznica > 20) {
+    info = <MoreThan20perc roznica={roznica} />;
+  } else if (roznica > 0 && roznica < 20) {
+    info = <LessThan20perc roznica={roznica} />;
+  } else if (roznica < 0 && roznica > -20) {
+    info = <LessThan20perc roznica={roznica} />;
+  }
 
   return (
     <div className="raportfield">
       <div className="data">
         <div className="chart-container">
-          <div className="header">Raport porównawczy</div>
+          <div className="header">Comparison report</div>
           <div className="chart">
-            <h1 className="header-chart">Porównanie danych o zużyciu</h1>
+            <h1 className="header-chart">Consumption data comparison</h1>
             <div className="chart3">
               <Bar data={dataChart} options={options} />
             </div>
@@ -161,18 +152,24 @@ const ComparisionRaport = ({ powerOfLamp, numberOfLamp, usedEnergy, rate }) => {
         </div>
         {info}
         <div className="details">
-          <h1 className="header-details">Szczegółowe dane</h1>
+          <h1 className="header-details">Detailed data</h1>
           <div className="details-data-container">
-            <div>Roczny koszt energii dla podanego zużycia energii:</div>
-            <div className="details-data-value">{numberFormat.format((usedEnergy * stawka).toFixed(2))} zł</div>
+            <div>Annual energy cost for the entered consumption:</div>
+            <div className="details-data-value">
+              {numberFormat.format((usedEnergy * stawka).toFixed(2))} PLN
+            </div>
           </div>
           <div className="details-data-container">
-            <div>Przewidywany roczny koszt zużycia energii:</div>
-            <div className="details-data-value">{numberFormat.format(koszt.toFixed(2))} zł</div>
+            <div>Estimated annual energy cost:</div>
+            <div className="details-data-value">
+              {numberFormat.format(koszt.toFixed(2))} PLN
+            </div>
           </div>
           <div className="details-data-container">
-            <div>Przewidywane zużycie energii:</div>
-            <div className="details-data-value">{numberFormat.format(consumptedPower.toFixed(3))} kWh</div>
+            <div>Estimated energy consumption:</div>
+            <div className="details-data-value">
+              {numberFormat.format(consumptedPower.toFixed(3))} kWh
+            </div>
           </div>
         </div>
       </div>

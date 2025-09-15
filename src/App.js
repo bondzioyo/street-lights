@@ -1,12 +1,8 @@
-import "devextreme/dist/css/dx.common.css";
-import "devextreme/dist/css/dx.light.css";
-// import logo from "./img/street-light.svg";
 import "./App.css";
 import Mainscreen from "./components/Mainscreen";
 import PredictionRaport from "./components/PredictionRaport";
 import ComparisionRaport from "./components/ComparisionRaport";
-import { useState } from "react";
-// import reactDom from "react-dom";
+import { useRef, useState } from "react";
 
 function App() {
   const [inputPolValue, setInputPolValue] = useState(""); //PolValue - power of lamp value
@@ -19,13 +15,20 @@ function App() {
   const [inputRateValue, setInputRateValue] = useState("");
   const [selectRateValue, setSelectRateValue] = useState("");
   const [rate, setRate] = useState("");
-  // const [numberOfLamp, setNumberOfLamp] = useState("");
 
-  var raport;
-  // if ((powerOfLamp !== "" && usedEnergy === "") || usedEnergy === 0) {
-  //   predictionRaport = <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} />;
-  // }
-  if ( usedEnergy != 0 && powerOfLamp != 0) {
+  let raport;
+  const reportRef = useRef(null);
+  const scrollToReport = () => {
+    if (reportRef.current) {
+      reportRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+  const numericUsedEnergy = Number(usedEnergy) || 0;
+  const numericPower = Number(powerOfLamp) || 0;
+  const showComparison = numericUsedEnergy !== 0 && numericPower !== 0;
+  const showForecast = numericUsedEnergy === 0 && numericPower !== 0;
+
+  if (numericUsedEnergy !== 0 && numericPower !== 0) {
     raport = (
       <ComparisionRaport
         powerOfLamp={powerOfLamp}
@@ -34,11 +37,21 @@ function App() {
         rate={rate}
       />
     );
+  } else if (numericUsedEnergy === 0 && numericPower !== 0) {
+    raport = (
+      <PredictionRaport
+        powerOfLamp={powerOfLamp}
+        numberOfLamp={numberOfLamp}
+        rate={rate}
+      />
+    );
+  } else if (
+    numericUsedEnergy === 0 &&
+    numericPower === 0 &&
+    (Number(numberOfLamp) || 0) === 0
+  ) {
+    raport = <div></div>;
   }
-  else if (usedEnergy == 0 && powerOfLamp != 0){
-    raport = <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} rate={rate}/>;
-  }
-  else if (usedEnergy === 0 && powerOfLamp === 0 && numberOfLamp === 0){raport = <div></div>;}
 
   return (
     <div>
@@ -63,11 +76,11 @@ function App() {
         selectRateValue={selectRateValue}
         setSelectRateValue={setSelectRateValue}
         setRate={setRate}
+        showForecast={showForecast}
+        showComparison={showComparison}
+        onScrollToReport={scrollToReport}
       />
-      {/* <PredictionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} /> */}
-      {/* <ComparisionRaport powerOfLamp={powerOfLamp} numberOfLamp={numberOfLamp} usedEnergy={usedEnergy}/> */}
-      {raport}
-      {/* {comparisionRaport} */}
+      <div ref={reportRef}>{raport}</div>
     </div>
   );
 }
