@@ -1,6 +1,14 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -10,87 +18,97 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 main {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #f7e76a;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  padding: 6vh 3vw;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 main .leftfield {
-  width: 70%;
-  background: #6a85f7;
-  -webkit-box-shadow: 3vw 0vw 5vw #6a85f7;
-          box-shadow: 3vw 0vw 5vw #6a85f7;
-  border-radius: 0 4vw 4vw 0;
+  width: 68%;
+  background: #ffffff;
+  -webkit-box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  border-radius: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   justify-self: center;
+  padding: 4vh 3vw;
+  gap: 2vh;
 }
 
 main .leftfield .inputarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 65vw;
-  height: 14vh;
+  width: 100%;
+  min-height: 72px;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: auto;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: visible;
 }
 
 main .leftfield .inputarea .inputdescription {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   margin-right: 2vw;
-  font-size: 1.3vmax;
+  font-size: 1.1vmax;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: end;
-  color: white;
+  color: #0f172a;
 }
 
 main .leftfield .inputarea .inputvalue {
   -webkit-box-flex: 1.5;
-      -ms-flex: 1.5;
-          flex: 1.5;
-  height: 10vh;
+  -ms-flex: 1.5;
+  flex: 1.5;
+  height: 56px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 3vw;
-  padding-left: 2vw;
-  border: none;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 12px;
+  padding-left: 1.2vw;
+  border: 1px solid #e5e7eb;
   outline: none;
+  background: #ffffff;
 }
 
 main .leftfield .inputarea .inputvalue::-webkit-input-placeholder {
@@ -109,46 +127,46 @@ main .leftfield .inputarea .inputvalue::-ms-input-placeholder {
 }
 
 main .leftfield .inputarea .inputvalue::placeholder {
-  width: 83%;
-  border-bottom: 1px #8b8b8b solid;
+  color: #9ca3af;
 }
 
 main .leftfield .inputarea .inputselect {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  margin-left: 3vw;
-  height: 10vh;
+  -webkit-box-flex: 1.2;
+  -ms-flex: 1.2;
+  flex: 1.2;
+  margin-left: 1.2vw;
+  height: 56px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 3vw;
-  padding-left: 2vw;
-  border: none;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 12px;
+  padding-left: 1.2vw;
+  border: 1px solid #e5e7eb;
   outline: none;
   cursor: pointer;
+  background: #ffffff;
 }
 
 main .leftfield .inputarea .inputcheck {
   -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   font-size: 1.3vmax;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: left;
   color: white;
   margin-left: 3vw;
@@ -164,44 +182,65 @@ main .leftfield .inputarea .inputcheck .checkmark {
 
 main .leftfield .inputarea .findout {
   width: 60%;
-  height: 10vh;
+  height: 56px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 3vw;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 12px;
   border: none;
   outline: none;
-  -webkit-box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.363);
-          box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.363);
-  letter-spacing: 2px;
-  font-weight: 600;
+  -webkit-box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
+  letter-spacing: 1px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  color: #ffffff;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 main .leftfield .inputarea .findout:hover {
   cursor: pointer;
-  background: #dadada;
+  -webkit-box-shadow: 0 8px 20px rgba(2, 6, 23, 0.16);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.16);
+  opacity: 0.95;
 }
 
 main .rightfield {
-  width: 30%;
+  width: 28%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 main .rightfield img {
-  height: 50vh;
+  height: 56vh;
+  filter: drop-shadow(0 10px 20px rgba(2, 6, 23, 0.15));
 }
+
+@media (max-width: 1024px) {
+  main {
+    padding: 4vh 3vw;
+  }
+
+  main .leftfield {
+    width: 100%;
+  }
+
+  main .rightfield {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=Mainscreen.css.map */

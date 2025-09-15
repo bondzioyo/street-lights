@@ -3,27 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/bar": "^0.67.0",
-    "@nivo/core": "^0.67.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "chart.js": "^2.9.4",
-    "devextreme": "^20.2.4",
-    "devextreme-react": "20.2.3",
-    "node-sass": "^5.0.0",
-    "react": "^17.0.1",
-    "react-awesome-button": "^6.5.1",
-    "react-chartjs-2": "^2.9.4",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^2.11.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.1",
+    "sass": "^1.79.5",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check ."
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +42,6 @@
     ]
   },
   "devDependencies": {
-    "devextreme-themebuilder": "^20.2.4"
+    "@biomejs/biome": "^1.9.4"
   }
 }

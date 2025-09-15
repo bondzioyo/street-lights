@@ -4,9 +4,11 @@ import logo from "../img/street-light.svg";
 // import '../component_scss/Rightfield/Rightfield.css'
 
 const Rightfield = () => {
-  return <div>
+  return (
+    <div>
       <img src={logo} alt="Logo" />
-  </div>;
+    </div>
+  );
 };
 
 export default Rightfield;

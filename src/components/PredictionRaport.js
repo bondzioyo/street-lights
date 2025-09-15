@@ -1,10 +1,8 @@
 import React from "react";
 import "../component_scss/PredictionRaport/PredictionRaport.css";
-// import PowerOfLampComponent from "./PowerOfLampComponent";
 import NightTime from "../data/NightTime.json";
 
 import { Bar } from "react-chartjs-2";
-// import { ResponsiveBar } from '@nivo/bar';
 
 const groupBy = (items, key) =>
   items.reduce(
@@ -16,14 +14,7 @@ const groupBy = (items, key) =>
   );
 
 const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
-  // console.log(powerOfLamp.map);
-
-  // var czasSwiecenia = NightTime.map((nt) => nt.night_time).reduce(
-  //   (a, b) => a + b,
-  //   0
-  // );
-
-  var data = NightTime.map((nt) => {
+  const data = NightTime.map((nt) => {
     return {
       month: nt.month,
       day: nt.day,
@@ -31,48 +22,24 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
     };
   });
 
-  // var stawka = 0.4610;
-  var stawka = rate;
-  var numberFormat = new Intl.NumberFormat("pl");
+  const stawka = rate;
+  const numberFormat = new Intl.NumberFormat("en");
 
-  // console.log(data.map((e) => e.powerConsumption));
-  // console.log(data.map((e) => e.day));
-  // var x = [data.map((e) => e.day), data.map((e) => e.powerConsumption)];
-  // console.log(data);
-  // var x = [Array.from({length: 365}, (_, i) => i + 1), data.map((e) => e.powerConsumption)];
-
-  // console.log(x);
-
-  // console.log(data.map((nt) => nt.powerConsumption).reduce(function (a, b) {
-  //     return a + b;
-  //   }, 0));
-
-  // console.log(groupBy(data, "month")[1].map((e) => e.powerConsumption).reduce(function (a, b) {
-  //   return a + b;
-  // }, 0));
-  var tablica = [];
-  for (var i = 1; i < 365; i++) {
+  const tablica = [];
+  for (let i = 1; i < 365; i++) {
     tablica[i] = [
       "day: " + i,
       "pobranaMoc: " + data.map((e) => e.powerConsumption)[i],
     ];
   }
-  // console.log(tablica);
-  // export const dataSource = tablica;
 
-  // console.log(test);
-  // console.log(groupBy(data, 'month')[1]);
-  // console.log(groupBy(test, 'month')[5]);
-  // console.log(groupBy(test, 'month')[5].map(e => e.powerConsumption).reduce(function(a, b) {
-  //   return a+b;
-  // }, 0));
-  var tab =[];
-  var tab2 =[];
-  var mostConsumpionMonth = 0;
-  var temporaryVar1 = 0;
+  const tab = [];
+  const tab2 = [];
+  let mostConsumpionMonth = 0;
+  let temporaryVar1 = 0;
   // var i = 1;
-  var miesiac_num = 0;
-  for (var j = 1; j <= 12; j++) {
+  let miesiac_num = 0;
+  for (let j = 1; j <= 12; j++) {
     // console.log(groupBy(test, 'month')[i].map(e => e.powerConsumption).reduce(function(a, b) {
     //   return a+b;
     // }, 0));
@@ -81,88 +48,87 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
       .reduce(function (a, b) {
         return a + b;
       }, 0);
-      tab[j-1] = temporaryVar1/1000;
-      tab2[j-1] = ((temporaryVar1/1000)*stawka).toFixed(2);
+    tab[j - 1] = temporaryVar1 / 1000;
+    tab2[j - 1] = ((temporaryVar1 / 1000) * stawka).toFixed(2);
 
     if (temporaryVar1 > mostConsumpionMonth) {
       mostConsumpionMonth = temporaryVar1;
       miesiac_num = j;
     }
   }
-//   console.log(numberFormat.format(((temporaryVar1/1000)*stawka).toFixed(2)))
-// console.log(tab);
 
-  var miesiac_txt = "";
+  let miesiac_txt = "";
   switch (miesiac_num) {
     case 1:
-      miesiac_txt = "Styczeń";
+      miesiac_txt = "January";
       break;
     case 2:
-      miesiac_txt = "Luty";
+      miesiac_txt = "February";
       break;
     case 3:
-      miesiac_txt = "Marzec";
+      miesiac_txt = "March";
       break;
     case 4:
-      miesiac_txt = "Kwiecień";
+      miesiac_txt = "April";
       break;
     case 5:
-      miesiac_txt = "Maj";
+      miesiac_txt = "May";
       break;
     case 6:
-      miesiac_txt = "Czerwiec";
+      miesiac_txt = "June";
       break;
     case 7:
-      miesiac_txt = "Lipiec";
+      miesiac_txt = "July";
       break;
     case 8:
-      miesiac_txt = "Sierpień";
+      miesiac_txt = "August";
       break;
     case 9:
-      miesiac_txt = "Wrzesień";
+      miesiac_txt = "September";
       break;
     case 10:
-      miesiac_txt = "Październik";
+      miesiac_txt = "October";
       break;
     case 11:
-      miesiac_txt = "Listopad";
+      miesiac_txt = "November";
       break;
     case 12:
-      miesiac_txt = "Grudzień";
+      miesiac_txt = "December";
       break;
     default:
-      miesiac_txt = `*Miesiąc*`;
+      miesiac_txt = `*Month*`;
   }
 
-  //     var lol[i] = groupBy(test, 'month')[5].map(e => e.powerConsumption).reduce(function(a, b) {
-  //       return a+b;
-  //     }, 0)
-  // console.log(lol);
-
-  // var zuzycie = (czasSwiecenia * powerOfLamp * numberOfLamp) / 1000;
-
-  var consumptedPower =
+  const consumptedPower =
     data
       .map((nt) => nt.powerConsumption)
       .reduce(function (a, b) {
         return a + b;
       }, 0) / 1000;
 
-  
-  // tab2 = tab;
-
-  var koszt = consumptedPower * stawka;
-
-  
+  const koszt = consumptedPower * stawka;
 
   const data2 = {
-    labels: ["Styczeń", 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
-        label: 'Zuzycie energii [kWh]', 
+        label: "Energy consumption [kWh]",
         // data: [1288, 19, 3, 5, 2, 3],
         data: tab,
-        backgroundColor: '#f7e76a98',
+        backgroundColor: "#f7e76a98",
         // backgroundColor: [
         //   'rgba(255, 99, 132, 0.2)',
         //   'rgba(54, 162, 235, 0.2)',
@@ -182,16 +148,29 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
         borderWidth: 1,
       },
     ],
-  }
-  
+  };
+
   const data3 = {
-    labels: ["Styczeń", 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
-        label: 'Koszt energii [zł]', 
+        label: "Energy cost [PLN]",
         // data: [1288, 19, 3, 5, 2, 3],
         data: tab2,
-        backgroundColor: 'rgba(82, 70, 248, 0.829)',
+        backgroundColor: "rgba(82, 70, 248, 0.829)",
         // backgroundColor: [
         //   'rgba(255, 99, 132, 0.2)',
         //   'rgba(54, 162, 235, 0.2)',
@@ -211,10 +190,9 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
         borderWidth: 1,
       },
     ],
-  }
+  };
 
   const options = {
-  
     scales: {
       yAxes: [
         {
@@ -229,40 +207,46 @@ const PredictionRaport = ({ powerOfLamp, numberOfLamp, rate }) => {
     },
     responsive: true,
     maintainAspectRatio: false,
-  }
+  };
 
   return (
     <div className="raportfield">
       <div className="data">
         <div className="chart-container">
-          <div className="header">Raport prognozy</div>
+          <div className="header">Forecast report</div>
           <div className="chart">
-            <h1 className="header-chart">Prognoza zużycia</h1>
-            <div className='chart1'>
-            <Bar data={data2} options={options}/>
+            <h1 className="header-chart">Consumption forecast</h1>
+            <div className="chart1">
+              <Bar data={data2} options={options} />
             </div>
-            <div className='chart2'>
-            <Bar data={data3} options={options}/>
+            <div className="chart2">
+              <Bar data={data3} options={options} />
             </div>
           </div>
         </div>
         <div className="details">
-          <h1 className="header-details">Szczegółowe dane</h1>
+          <h1 className="header-details">Detailed data</h1>
           <div className="details-data-container">
-            <div>Roczny koszt energii dla podanej mocy instalacji:</div>
-            <div className="details-data-value">{numberFormat.format(koszt.toFixed(2))} zł</div>
+            <div>Annual energy cost for the given installation power:</div>
+            <div className="details-data-value">
+              {numberFormat.format(koszt.toFixed(2))} PLN
+            </div>
           </div>
           <div className="details-data-container">
-            <div>Roczne zużycie energii:</div>
-            <div className="details-data-value">{numberFormat.format(consumptedPower.toFixed(3))} kWh</div>
+            <div>Annual energy consumption:</div>
+            <div className="details-data-value">
+              {numberFormat.format(consumptedPower.toFixed(3))} kWh
+            </div>
           </div>
           <div className="details-data-container">
-            <div>Najwyższe zakładane zużycie przypada na miesiąc:</div>
+            <div>Highest assumed consumption occurs in:</div>
             <div className="details-data-value">{miesiac_txt}</div>
           </div>
           <div className="details-data-container">
-            <div>W tym miesiącu zużycie wynosi:</div>
-            <div className="details-data-value">{numberFormat.format((mostConsumpionMonth / 1000).toFixed(3))} kWh</div>
+            <div>Consumption in that month:</div>
+            <div className="details-data-value">
+              {numberFormat.format((mostConsumpionMonth / 1000).toFixed(3))} kWh
+            </div>
           </div>
         </div>
       </div>

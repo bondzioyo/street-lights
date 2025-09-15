@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
 import "../component_scss/ComparisionRport/ComparisionRaport.css";
 
-const LessThan20perc= ({roznica}) => {
-    return (
-    <div className="detailInfo" style={{ background: 'rgba(43, 250, 36, 0.397)', color: 'green' }}>
-      Różnica w zużyciu energii wynosi {roznica.toFixed(2)} % i jej wartość mieści się w normie.
-    </div>);
-  };
+const LessThan20perc = ({ roznica }) => {
+  return (
+    <div
+      className="detailInfo"
+      style={{ background: "rgba(43, 250, 36, 0.397)", color: "green" }}
+    >
+      The difference in energy consumption is {roznica.toFixed(2)}% and is
+      within tolerance.
+    </div>
+  );
+};
 
-  export default LessThan20perc;
+export default LessThan20perc;
